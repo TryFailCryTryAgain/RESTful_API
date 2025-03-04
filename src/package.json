@@ -21,7 +21,10 @@
   "homepage": "https://github.com/TryFailCryTryAgain/RESTful_API#readme",
   "description": "",
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.14.1",
+    "mongoose": "^8.12.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
