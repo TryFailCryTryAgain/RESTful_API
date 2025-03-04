@@ -6,8 +6,11 @@ const BookStoreRouter = express.Router();
 
 // Destructure the functions from the imported object
 const { getUsers, getUserById, createUser, updateUser, deleteUser } = userController;
-const { getBook } = bookController;
+const { getBook, getBookByName } = bookController;
 // Define routes
+
+BookStoreRouter.get("/book", getBook);
+BookStoreRouter.get("/book/:name", getBookByName);
 
 // User Routes
 BookStoreRouter.get("/user", getUsers);
@@ -18,8 +21,8 @@ BookStoreRouter.delete("/user/:id", deleteUser);
 
 // Book Routes
 
-BookStoreRouter.get("/book", getBook);
-// BookStoreRouter.get("/book/:id", getBookById);
+
+
 // BookStoreRouter.post("/book", createBook);
 // BookStoreRouter.put("/book/:id", updateBook);
 // BookStoreRouter.delete("/book/:id", deleteBook);
