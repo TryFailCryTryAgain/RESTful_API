@@ -10,7 +10,7 @@ const { getBook, getBookByName } = bookController;
 // Define routes
 
 BookStoreRouter.get("/book", getBook);
-BookStoreRouter.get("/book/:name", getBookByName);
+BookStoreRouter.get("/book/:title", getBookByName);
 
 // User Routes
 BookStoreRouter.get("/user", getUsers);
@@ -20,9 +20,6 @@ BookStoreRouter.put("/user/:id", updateUser);
 BookStoreRouter.delete("/user/:id", deleteUser);
 
 // Book Routes
-
-
-
 // BookStoreRouter.post("/book", createBook);
 // BookStoreRouter.put("/book/:id", updateBook);
 // BookStoreRouter.delete("/book/:id", deleteBook);

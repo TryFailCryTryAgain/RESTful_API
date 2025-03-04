@@ -20,7 +20,9 @@ const getBookByName = async (req: Request, res: Response): Promise<void> => {
             res.status(400).json({ title: "title params is required "});
             return;
         }
-        const book = await   Book.findOne({ title: title });
+        // Decodes the title (e.g it will replace the %20 with spaces)
+        const decodedTitle = decodeURIComponent(title);
+        const book = await   Book.findOne({ title: decodedTitle });
         if (!book || book.lenght === 0) {
             res.status(404).json({ message: "No books found with that name! "});
         }
