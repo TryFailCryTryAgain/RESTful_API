@@ -1,0 +1,33 @@
+{
+  "name": "restful_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "tsc",
+    "dev": "nodemon --exec ts-node server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TryFailCryTryAgain/RESTful_API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TryFailCryTryAgain/RESTful_API/issues"
+  },
+  "homepage": "https://github.com/TryFailCryTryAgain/RESTful_API#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.9",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
