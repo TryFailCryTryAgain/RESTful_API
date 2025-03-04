@@ -1,0 +1,92 @@
+[
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Fiction",
+    "price": 10.99,
+    "stock": 50,
+    "description": "A classic novel about the American Dream.",
+    "publishedDate": "1925-04-10"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "price": 12.99,
+    "stock": 30,
+    "description": "A powerful story of racial injustice and moral growth.",
+    "publishedDate": "1960-07-11"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "price": 9.99,
+    "stock": 25,
+    "description": "A chilling depiction of totalitarianism.",
+    "publishedDate": "1949-06-08"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "genre": "Romance",
+    "price": 8.99,
+    "stock": 40,
+    "description": "A timeless tale of love and societal expectations.",
+    "publishedDate": "1813-01-28"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": "Fiction",
+    "price": 11.99,
+    "stock": 20,
+    "description": "A story of teenage rebellion and alienation.",
+    "publishedDate": "1951-07-16"
+  },
+  {
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "genre": "Adventure",
+    "price": 14.99,
+    "stock": 15,
+    "description": "An epic tale of obsession and the sea.",
+    "publishedDate": "1851-10-18"
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "price": 13.99,
+    "stock": 60,
+    "description": "A fantasy adventure about Bilbo Baggins.",
+    "publishedDate": "1937-09-21"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Dystopian",
+    "price": 10.49,
+    "stock": 35,
+    "description": "A vision of a future society driven by technology.",
+    "publishedDate": "1932-01-01"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "price": 29.99,
+    "stock": 45,
+    "description": "An epic fantasy trilogy about the quest to destroy the One Ring.",
+    "publishedDate": "1954-07-29"
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "Philosophical Fiction",
+    "price": 9.49,
+    "stock": 55,
+    "description": "A story about following your dreams and listening to your heart.",
+    "publishedDate": "1988-01-01"
+  }
+]

@@ -1,16 +1,28 @@
 import express from 'express';
 import userController from '../controllers/userController'; // Import the default export
+import bookController from '../controllers/bookController';
 
-const userRouter = express.Router();
+const BookStoreRouter = express.Router();
 
 // Destructure the functions from the imported object
 const { getUsers, getUserById, createUser, updateUser, deleteUser } = userController;
-
+const { getBook } = bookController;
 // Define routes
-userRouter.get("/", getUsers);
-userRouter.get("/:id", getUserById);
-userRouter.post("/", createUser);
-userRouter.put("/:id", updateUser);
-userRouter.delete("/:id", deleteUser);
 
-export default userRouter;
+// User Routes
+BookStoreRouter.get("/user", getUsers);
+BookStoreRouter.get("/user/:id", getUserById);
+BookStoreRouter.post("/user", createUser);
+BookStoreRouter.put("/user/:id", updateUser);
+BookStoreRouter.delete("/user/:id", deleteUser);
+
+// Book Routes
+
+BookStoreRouter.get("/book", getBook);
+// BookStoreRouter.get("/book/:id", getBookById);
+// BookStoreRouter.post("/book", createBook);
+// BookStoreRouter.put("/book/:id", updateBook);
+// BookStoreRouter.delete("/book/:id", deleteBook);
+
+
+export default BookStoreRouter;

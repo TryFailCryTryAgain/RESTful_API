@@ -1,9 +1,12 @@
 import express from 'express';
 import { connectToDatabase } from './utils/db';
 import { Book } from './models/model';
+import BookStoreRouter from './routes/userRoutes';
 
 const app = express();
 app.use(express.json());
+
+app.use("/store", BookStoreRouter);
 
 // Get all books
 app.get('/books', async (req, res) => {
