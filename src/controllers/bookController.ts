@@ -8,9 +8,9 @@ const getBook = async (req: Request, res: Response): Promise<void> => {
         const books = await Book.find();
         res.json(books);
     } catch (err) {
-        res.status(500).json({ message: "Error fetching books ", error: err })
+        res.status(500).json({ message: "Error fetching books ", error: err });
     }
-};
+}
 
 const getBookByTitle = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -37,7 +37,6 @@ const createBook = async (req: Request, res: Response): Promise<void> => {
     try {
         await connectToDatabase();
         const { title, author, genre, price, stock, description, publishedDate } = req.body
-
         // Decode inputs with %20 in them
 
         const newBook = new Book({
