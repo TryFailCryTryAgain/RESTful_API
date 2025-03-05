@@ -1,35 +1,12 @@
 import express from 'express';
-import { connectToDatabase } from './utils/db';
-import { Book } from './models/model';
-import BookStoreRouter from './routes/userRoutes';
+import BookStoreUserRouter from './routes/userRoutes';
+import BookStoreBooksRouter from './routes/bookRoutes';
 
 const app = express();
 app.use(express.json());
 
-app.use("/store", BookStoreRouter);
-
-// Get all books
-app.get('/books', async (req, res) => {
-  try {
-    await connectToDatabase(); // Ensure the database is connected
-    const books = await Book.find();
-    res.json(books);
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching books', error: err });
-  }
-});
-
-// Add a new book
-app.post('/books', async (req, res) => {
-  try {
-    await connectToDatabase(); // Ensure the database is connected
-    const newBook = new Book(req.body);
-    await newBook.save();
-    res.status(201).json(newBook);
-  } catch (err) {
-    res.status(400).json({ message: 'Error creating book', error: err });
-  }
-});
+app.use("/user", BookStoreUserRouter);
+app.use("/book", BookStoreBooksRouter);
 
 // Start the server
 const PORT = 3000;
