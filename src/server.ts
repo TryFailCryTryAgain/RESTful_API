@@ -3,6 +3,7 @@ import BookStoreUserRouter from './routes/userRoutes';
 import BookStoreBooksRouter from './routes/bookRoutes';
 import BookStoreOrderRouter from './routes/orderRoutes';
 import BookStoreReviewRouter from './routes/reviewRoutes';
+import { connectToDatabase } from '../src/utils/db';
 
 const app = express();
 // Place the connection here
@@ -12,6 +13,16 @@ app.use("/user", BookStoreUserRouter);
 app.use("/book", BookStoreBooksRouter);
 app.use("/order", BookStoreOrderRouter);
 app.use("/review", BookStoreReviewRouter);
+
+app.get('/', (req, res) => {
+  res.send('User route is working');
+});
+
+connectToDatabase();
+
+
+// Error handling middleware
+
 
 // Start the server
 const PORT = 3000;

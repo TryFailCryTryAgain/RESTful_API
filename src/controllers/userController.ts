@@ -1,11 +1,9 @@
 import { Request, Response } from 'express';
 import { User } from '../models/userModel';
-import { connectToDatabase } from '../utils/db';
 
 // Get all users
 const getUsers = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const users = await User.find();
         res.json(users);
     } catch (err) {
@@ -15,7 +13,6 @@ const getUsers = async (req: Request, res: Response): Promise<void> => {
 
 const getUsersByFirstName = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { first_name } = req.params;
         if (!first_name) {
             res.status(400).json({ first_name: "First_name params is required "});
@@ -32,7 +29,6 @@ const getUsersByFirstName = async (req: Request, res: Response): Promise<void> =
 
 const getUsersByLastName = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { last_name } = req.params;
         if (!last_name) {
             res.status(400).json({ first_name: "First_name params is required "});
@@ -49,7 +45,6 @@ const getUsersByLastName = async (req: Request, res: Response): Promise<void> =>
 
 const getUserById = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required" });
@@ -67,7 +62,6 @@ const getUserById = async (req: Request, res: Response): Promise<void> => {
 // Create a new user
 const createUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { first_name, last_name, phone, email, password, adress, ZIP } = req.body;
 
         const newUser = new User({
@@ -89,8 +83,6 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
 
 const updateUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         // Debug log
         console.log("Request Params:", req.params);
 
@@ -123,8 +115,6 @@ const updateUser = async (req: Request, res: Response): Promise<void> => {
 
 const deleteUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required" });

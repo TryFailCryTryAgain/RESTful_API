@@ -1,11 +1,8 @@
 import { Request, Response } from 'express';
-import { connectToDatabase } from '../utils/db';
 import { Review } from '../models/reviewModel'; // Import the Book model
-import { connect } from 'http2';
 
 const getReviews = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const reviews = await Review.find();
         res.json(reviews);
     } catch (err) {
@@ -15,7 +12,6 @@ const getReviews = async (req: Request, res: Response): Promise<void> => {
 
 const getReviewById = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required! "});
@@ -33,7 +29,6 @@ const getReviewById = async (req: Request, res: Response): Promise<void> => {
 
 const createReview = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { bookId, userId, rating, comment } = req.body
         const date = Date.now();
 
@@ -54,8 +49,6 @@ const createReview = async (req: Request, res: Response): Promise<void> => {
 
 const updateReview = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required! "});
@@ -95,8 +88,6 @@ const updateReview = async (req: Request, res: Response): Promise<void> => {
 
 const deleteReview = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required! "});

@@ -1,11 +1,9 @@
 import { Request, Response } from 'express';
-import { connectToDatabase } from '../utils/db';
 import { Order } from '../models/orderModel';
 import { Book } from '../models/bookModel';
 
 const getOrders = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const orders = await Order.find();
         res.json(orders);
     } catch (err) {
@@ -15,7 +13,6 @@ const getOrders = async (req: Request, res: Response): Promise<void> => {
 
 const getOrderById = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required! "});
@@ -34,8 +31,6 @@ const getOrderById = async (req: Request, res: Response): Promise<void> => {
 const createOrder = async (req: Request, res: Response): Promise<void> => {
     // Add away so when it gets display, show the title of the book, and display the username of the user_id
     try {
-        await connectToDatabase();
-
         const { userId, bookIds, status } = req.body;
 
         if (!userId) {
@@ -73,8 +68,6 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
 
 const updateOrder = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required! "});
@@ -132,8 +125,6 @@ const updateOrder = async (req: Request, res: Response): Promise<void> => {
 
 const deleteOrder = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is required! "});

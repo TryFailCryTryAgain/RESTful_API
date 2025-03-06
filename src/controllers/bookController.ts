@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
-import { connectToDatabase } from '../utils/db';
 import { Book } from '../models/bookModel'; // Import the Book model
 
 const getBook = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const books = await Book.find();
         res.json(books);
     } catch (err) {
@@ -14,7 +12,6 @@ const getBook = async (req: Request, res: Response): Promise<void> => {
 
 const getBookByTitle = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { title } = req.params;
         if (!title) {
             res.status(400).json({ title: "title params is required "});
@@ -35,7 +32,6 @@ const getBookByTitle = async (req: Request, res: Response): Promise<void> => {
 
 const createBook = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
         const { title, author, genre, price, stock, description, publishedDate } = req.body
         // Decode inputs with %20 in them
 
@@ -58,8 +54,6 @@ const createBook = async (req: Request, res: Response): Promise<void> => {
 
 const updateBook = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is requried! "});
@@ -90,8 +84,6 @@ const updateBook = async (req: Request, res: Response): Promise<void> => {
 
 const deleteBook = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDatabase();
-
         const { _id } = req.params;
         if (!_id) {
             res.status(400).json({ _id: "_id params is requried! "});

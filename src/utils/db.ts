@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const uri = process.env.MONGODB_URI || "";// Replace with your MongoDB URI
+dotenv.config();
+
+const uri = process.env.MONGODB_URI|| "";// Replace with your MongoDB URI
 
 let cachedDb: mongoose.Connection | null = null;
 
