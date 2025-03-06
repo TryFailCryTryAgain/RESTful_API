@@ -132,86 +132,86 @@ usermockdata.json
 ### Local Server
 
 #### Fetch all users
-curl http://localhost:3000/user/
+  curl http://localhost:3000/user/
 
 #### Fetch users by first name
-curl http://localhost:3000/user/first/:first_name
+  curl http://localhost:3000/user/first/:first_name
 
 #### Fetch users by last name
-curl http://localhost:3000/user/last/:last_name
+  curl http://localhost:3000/user/last/:last_name
 
 #### Fetch user by ID
-curl http://localhost:3000/user/id/:_id
+  curl http://localhost:3000/user/id/:_id
 
 #### Create a new user
-curl -X POST http://localhost:3000/user/ \
--H "Content-Type: application/json" \
--d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
+  curl -X POST http://localhost:3000/user/ \
+  -H "Content-Type: application/json" \
+  -d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
 
 #### Update a user by ID
-curl -X PUT http://localhost:3000/user/:_id \
--H "Content-Type: application/json" \
--d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
+  curl -X PUT http://localhost:3000/user/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
 
 #### Delete a user by ID
-curl -X DELETE http://localhost:3000/user/:_id
+  curl -X DELETE http://localhost:3000/user/:_id
 
 #### Fetch all books
 curl http://localhost:3000/book/
 
 #### Fetch a book by title
-curl http://localhost:3000/book/:title
+  curl http://localhost:3000/book/:title
 
 #### Create a new book
-curl -X POST http://localhost:3000/book/ \
--H "Content-Type: application/json" \
--d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
+  curl -X POST http://localhost:3000/book/ \
+  -H "Content-Type: application/json" \
+  -d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
 
 #### Update a book by ID
-curl -X PUT http://localhost:3000/book/:_id \
--H "Content-Type: application/json" \
--d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
+  curl -X PUT http://localhost:3000/book/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
 
 #### Delete a book by ID
-curl -X DELETE http://localhost:3000/book/:_id
+  curl -X DELETE http://localhost:3000/book/:_id
 
 #### Fetch all reviews
-curl http://localhost:3000/review/
+  curl http://localhost:3000/review/
 
 #### Fetch a review by ID
-curl http://localhost:3000/review/:_id
+  curl http://localhost:3000/review/:_id
 
 #### Create a new review
-curl -X POST http://localhost:3000/review/ \
--H "Content-Type: application/json" \
--d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
+  curl -X POST http://localhost:3000/review/ \
+  -H "Content-Type: application/json" \
+  -d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
 
 #### Update a review by ID
-curl -X PUT http://localhost:3000/review/:_id \
--H "Content-Type: application/json" \
--d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
+  curl -X PUT http://localhost:3000/review/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
 
 #### Delete a review by ID
-curl -X DELETE http://localhost:3000/review/:_id
+  curl -X DELETE http://localhost:3000/review/:_id
 
 #### Fetch all orders
-curl http://localhost:3000/order/
+  curl http://localhost:3000/order/
 
 #### Fetch an order by ID
-curl http://localhost:3000/order/:_id
+  curl http://localhost:3000/order/:_id
 
 #### Create a new order
-curl -X POST http://localhost:3000/order/ \
--H "Content-Type: application/json" \
--d '{"userId": "", "bookIds": ["", ""]}'
+  curl -X POST http://localhost:3000/order/ \
+  -H "Content-Type: application/json" \
+  -d '{"userId": "", "bookIds": ["", ""]}'
 
 #### Update an order by ID
-curl -X PUT http://localhost:3000/order/:_id \
--H "Content-Type: application/json" \
--d '{"userId": "", "bookIds": ["", ""]}'
+  curl -X PUT http://localhost:3000/order/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"userId": "", "bookIds": ["", ""]}'
 
 #### Delete an order by ID
-curl -X DELETE http://localhost:3000/order/:_id
+  curl -X DELETE http://localhost:3000/order/:_id
 
 ### Deployed server
 
