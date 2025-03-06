@@ -5,6 +5,7 @@ import BookStoreOrderRouter from './routes/orderRoutes';
 import BookStoreReviewRouter from './routes/reviewRoutes';
 
 const app = express();
+// Place the connection here
 app.use(express.json());
 
 app.use("/user", BookStoreUserRouter);

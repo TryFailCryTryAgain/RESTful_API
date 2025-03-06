@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const uri = process.env.MONGODB_URI || 'mongodb+srv://davidksegerbo:hBwIcXChhRHLyeP1@cluster0.ygtqs.mongodb.net/API'; // Replace with your MongoDB URI
+const uri = process.env.MONGODB_URI || "";// Replace with your MongoDB URI
 
 let cachedDb: mongoose.Connection | null = null;
 
@@ -10,7 +10,7 @@ export async function connectToDatabase(): Promise<mongoose.Connection> {
   }
 
   // Connect to MongoDB using Mongoose
-  await mongoose.connect(uri, {
+  await mongoose.connect(uri as string, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   } as mongoose.ConnectOptions);
