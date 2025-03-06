@@ -1,169 +1,224 @@
+# U05 - RESTful API
 
-## Package Json
-**Start**: Runs the compiled JavaScript code
-**Build**: Compiles Typescript to JavaScript.
-**Dev**: run the development server with ts-node and nodemon.
+This project is a RESTful API built using **Express**, **TypeScript**, and **MongoDB**. It provides endpoints for managing users, books, reviews, and orders. The API is designed to be scalable, modular, and easy to use. Below is a detailed guide on how to set up, run, and interact with the API.
 
+---
 
+## Table of Contents
 
+1. [Technologies Used](#technologies-used)
+2. [Project Structure](#project-structure)
+3. [Setup and Installation](#setup-and-installation)
+4. [Running the Server](#running-the-server)
+5. [API Endpoints](#api-endpoints)
+   - [User Routes](#user-routes)
+   - [Book Routes](#book-routes)
+   - [Review Routes](#review-routes)
+   - [Order Routes](#order-routes)
+6. [cURL Commands](#curl-commands)
+   - [Local Server](#local-server)
+   - [Deployed Server](#deployed-server)
+7. [License](#license)
 
-// design the API
+---
 
-1. Object modeling (Identify the objects that will be preseted as resources)
+## Technologies Used
 
-2. Create resource uris (Decide the resource URI's that endpoints for the API)
+- **Backend Framework**: Express
+- **Programming Language**: TypeScript (can be converted to JavaScript)
+- **Database**: MongoDB
+  - Mongoose (ODM)
+  - MongoDB Compass
+  - MongoDB Atlas
+- **Environment Management**: dotenv
+- **Development Tools**:
+  - Nodemon
+  - ts-node
+  - TypeScript
+  - @types/express
+  - @types/node
 
-3. Resource representations (Work on the resource representation that each URI will return to the clients)
+---
 
-4. Assign HTTP methods ( Decide all possible operations and map those to the resource URIs via HTTP Methods )
-
-
-Theme: Online BookStore API
-
-The main objects (resources) in this system are:
-
-Book: Represents a book in the bookstore.
-
-    Attributes: id, title, author, genre, price, stock, description, publishedDate.
-
-User: Represents a user of the bookstore.
-
-    Attributes: id, name, email, password, address, phone.
-
-Order: Represents an order placed by a user.
-
-    Attributes: id, userId, bookIds (list of book IDs), totalAmount, orderDate, status.
-
-Review: Represents a review left by a user for a book.
-
-    Attributes: id, bookId, userId, rating, comment, date.
-
-
-Routes regarding the API:
-
-- Regarding books
-
-/books (Get all books in the db)
-
-/books/{bookId} (get a specific book)
-
-/books (add a new book)
-
-/books{bookID} (update a specific book)
-
-/books{bookID} (delete a specific book)
-
-- Regarding users
-
-/users (get all users)
-
-/users/{userid} (get a specific user)
-
-/users {register a new user}
-
-/users/{userid} (update a user)
-
-/users/{userid} (delete a user)
-
-- Regarding orders
-
-/order (get all order)
-
-/order/{orderid} (get a specific order)
-
-/order {register a new order}
-
-/order/{orderid} (update a order)
-
-/order/{orderid} (delete a order)
-
-- Regarding Reviews
-
-/books/{bookId}/reviews (Get all reviews for a book) 
-
-/reviews/{reviewId} (Get a specific review) 
-
-/books/{bookId}/reviews (Add a review) 
-
-/reviews/{reviewId} (Update a review) 
-
-/reviews/{reviewId} (Delete a review)
+## Project Structure
+src/
+├── controllers/
+│ ├── bookController.ts
+│ ├── orderController.ts
+│ ├── reviewController.ts
+│ ├── userController.ts
+├── models/
+│ ├── bookModel.ts
+│ ├── userModel.ts
+│ ├── orderModel.ts
+│ ├── reviewModel.ts
+├── routes/
+│ ├── bookRoutes.ts
+│ ├── orderRoutes.ts
+│ ├── reviewRoutes.ts
+│ ├── userRoutes.ts
+├── utils/
+│ ├── db.ts
+├── .env
+├── package.json
+├── server.ts
+├── tsconfig.json
+bookmockdata.json
+usermockdata.json
 
 
-Resource Representation:
+---
 
-- Book
-{
-  "id": "123",
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "genre": "Fiction",
-  "price": 10.99,
-  "stock": 50,
-  "description": "A classic novel about the American Dream.",
-  "publishedDate": "1925-04-10"
-}
+## Setup and Installation
 
-- User
-{
-  "id": "456",
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "password": "hashed_password",
-  "address": "123 Main St, City, Country",
-  "phone": "+1234567890"
-}
+1. **Clone the Repository**:
+   - bash
+   git clone <repository-url>
+   cd <project-folder>¨
 
-- order
-{
-  "id": "789",
-  "userId": "456",
-  "bookIds": ["123", "124"],
-  "totalAmount": 25.98,
-  "orderDate": "2023-10-01T12:00:00Z",
-  "status": "Shipped"
-}
+2. **Install Dependencies:**
+    npm install
 
-- review
-{
-  "id": "101",
-  "bookId": "123",
-  "userId": "456",
-  "rating": 5,
-  "comment": "Amazing book!",
-  "date": "2023-10-02T14:30:00Z"
-}
+3. **Set Up Environment Variables:**
+    - Create a .env file in the root directory.
+    - Add the following variables:
+      MONGO_URI=<your-mongodb-connection-string>
 
-4. Assing HTTP methods
+4. **Run the Server:**
+    - For development:
+      - npm run dev
+    - For production:
+      - npm run build
+      - npm start
 
-Books
+## API Endpoints
 
-GET /books: Retrieve all books.
-GET /books/{bookId}: Retrieve a specific book.
-POST /books: Add a new book.
-PUT /books/{bookId}: Update a book.
-DELETE /books/{bookId}: Delete a book.
+### User Routes
 
-Users
+- GET /user/ - Fetches all users.
+- GET /user/first/:first_name - Fetches users by first name.
+- GET /user/last/:last_name - Fetches users by last name.
+- GET /user/id/:_id - Fetches a user by ID.
+- POST /user/ - Creates a new user.
+- PUT /user/:_id - updates a user by ID.
+- DELETE /user/:_id - Deletes a user by ID.
 
-GET /users: Retrieve all users.
-GET /users/{userId}: Retrieve a specific user.
-POST /users: Register a new user.
-PUT /users/{userId}: Update a user.
-DELETE /users/{userId}: Delete a user.
+### Book Routes
 
-Orders
+- GET /book/ - fetches all books
+- GET /book/:title - Fetches a book by title.
+- POST /book/ - Creates a new book.
+- PUT /book/:_id - Updates a bbok by ID.
+- DELETE /book/:_id - Deletes a book by ID.
 
-GET /orders: Retrieve all orders.
-GET /orders/{orderId}: Retrieve a specific order.
-POST /orders: Place a new order.
-PUT /orders/{orderId}: Update an order status.
-DELETE /orders/{orderId}: Delete an order.
+### Review Routes
 
-Reviews
+- GET /review/ - Fetches all reviews.
+- GET /review/:_id - fetches a review by ID.
+- POST /review/ - Creates a new review.
+- PUT /review/:_id - updates a review by ID.
+- DELETE /review/:_id - deletes a review by ID.
 
-GET /books/{bookId}/reviews: Retrieve all reviews for a book.
-GET /reviews/{reviewId}: Retrieve a specific review.
-POST /books/{bookId}/reviews: Add a review for a book.
-PUT /reviews/{reviewId}: Update a review.
-DELETE /reviews/{reviewId}: Delete a review.
+### Order Routes
+
+- GET /order/ - Fetches all orders.
+- GET /order/:_id - Fetches an order by ID.
+- POST /order/ - Creates a new order.
+- PUT /order/:_id - Updates an order by ID.
+- DELETE /order/:_id - Deletes an order by ID.
+
+## cURL Commands
+
+### Local Server
+
+#### Fetch all users
+curl http://localhost:3000/user/
+
+#### Fetch users by first name
+curl http://localhost:3000/user/first/:first_name
+
+#### Fetch users by last name
+curl http://localhost:3000/user/last/:last_name
+
+#### Fetch user by ID
+curl http://localhost:3000/user/id/:_id
+
+#### Create a new user
+curl -X POST http://localhost:3000/user/ \
+-H "Content-Type: application/json" \
+-d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
+
+#### Update a user by ID
+curl -X PUT http://localhost:3000/user/:_id \
+-H "Content-Type: application/json" \
+-d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
+
+#### Delete a user by ID
+curl -X DELETE http://localhost:3000/user/:_id
+
+#### Fetch all books
+curl http://localhost:3000/book/
+
+#### Fetch a book by title
+curl http://localhost:3000/book/:title
+
+#### Create a new book
+curl -X POST http://localhost:3000/book/ \
+-H "Content-Type: application/json" \
+-d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
+
+#### Update a book by ID
+curl -X PUT http://localhost:3000/book/:_id \
+-H "Content-Type: application/json" \
+-d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
+
+#### Delete a book by ID
+curl -X DELETE http://localhost:3000/book/:_id
+
+#### Fetch all reviews
+curl http://localhost:3000/review/
+
+#### Fetch a review by ID
+curl http://localhost:3000/review/:_id
+
+#### Create a new review
+curl -X POST http://localhost:3000/review/ \
+-H "Content-Type: application/json" \
+-d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
+
+#### Update a review by ID
+curl -X PUT http://localhost:3000/review/:_id \
+-H "Content-Type: application/json" \
+-d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
+
+#### Delete a review by ID
+curl -X DELETE http://localhost:3000/review/:_id
+
+#### Fetch all orders
+curl http://localhost:3000/order/
+
+#### Fetch an order by ID
+curl http://localhost:3000/order/:_id
+
+#### Create a new order
+curl -X POST http://localhost:3000/order/ \
+-H "Content-Type: application/json" \
+-d '{"userId": "", "bookIds": ["", ""]}'
+
+#### Update an order by ID
+curl -X PUT http://localhost:3000/order/:_id \
+-H "Content-Type: application/json" \
+-d '{"userId": "", "bookIds": ["", ""]}'
+
+#### Delete an order by ID
+curl -X DELETE http://localhost:3000/order/:_id
+
+### Deployed server
+
+- MIA ATM
+Replace http://localhost:3000 with your deployed server URL (e.g., https://api.example.com).
+- Needs more looking into
+
+
+## Licens
+This project is licensed under the MIT License. See the LICENSE file for details
