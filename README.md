@@ -241,11 +241,120 @@ curl http://localhost:3000/book/
 ~~~
   curl -X DELETE http://localhost:3000/order/:_id
 ~~~
+
 ### Deployed server
 
-- MIA ATM
-Replace http://localhost:3000 with your deployed server URL (e.g., https://api.example.com).
-- Needs more looking into
+#### Fetch all users
+~~~
+  curl https://restful-api-sca9.onrender.com/user/
+~~~
+
+#### Fetch users by first name
+~~~
+  curl https://restful-api-sca9.onrender.com/user/first/:first_name
+~~~
+
+#### Fetch users by last name
+~~~
+  curl https://restful-api-sca9.onrender.com/user/last/:last_name
+~~~
+
+#### Fetch user by ID
+~~~
+  curl https://restful-api-sca9.onrender.com/user/id/:_id
+~~~
+
+#### Create a new user
+~~~
+  curl -X POST https://restful-api-sca9.onrender.com/user/ \
+  -H "Content-Type: application/json" \
+  -d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
+~~~
+
+#### Update a user by ID
+~~~
+  curl -X PUT https://restful-api-sca9.onrender.com/user/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"first_name": "John", "last_name": "Doe", "email": "John.Doe@example.se", "password": "Test123"}'
+~~~
+#### Delete a user by ID
+~~~
+  curl -X DELETE https://restful-api-sca9.onrender.com/user/:_id
+~~~
+#### Fetch all books
+~~~
+curl https://restful-api-sca9.onrender.com/book/
+~~~
+#### Fetch a book by title
+~~~
+  curl https://restful-api-sca9.onrender.com/book/:title
+~~~
+#### Create a new book
+~~~
+  curl -X POST https://restful-api-sca9.onrender.com/book/ \
+  -H "Content-Type: application/json" \
+  -d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
+~~~
+#### Update a book by ID
+~~~
+  curl -X PUT https://restful-api-sca9.onrender.com/book/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"title": "", "author": "", "genre": "", "price": "", "stock": "", "description": "", "publishedDate": ""}'
+~~~
+#### Delete a book by ID
+~~~
+  curl -X DELETE https://restful-api-sca9.onrender.com/book/:_id
+~~~
+#### Fetch all reviews
+~~~
+  curl https://restful-api-sca9.onrender.com/review/
+~~~
+#### Fetch a review by ID
+~~~
+  curl https://restful-api-sca9.onrender.com/review/:_id
+~~~
+#### Create a new review
+~~~
+  curl -X POST https://restful-api-sca9.onrender.com/review/ \
+  -H "Content-Type: application/json" \
+  -d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
+~~~
+#### Update a review by ID
+~~~
+  curl -X PUT https://restful-api-sca9.onrender.com/review/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"bookId": "", "userId": "", "rating": "", "comment": ""}'
+~~~
+#### Delete a review by ID
+~~~
+  curl -X DELETE https://restful-api-sca9.onrender.com/review/:_id
+~~~
+#### Fetch all orders
+~~~
+  curl https://restful-api-sca9.onrender.com/order/
+~~~
+#### Fetch an order by ID
+~~~
+  curl https://restful-api-sca9.onrender.com/order/:_id
+~~~
+#### Create a new order
+~~~
+  curl -X POST https://restful-api-sca9.onrender.com/order/ \
+  -H "Content-Type: application/json" \
+  -d '{"userId": "", "bookIds": ["", ""]}'
+~~~
+#### Update an order by ID
+~~~
+  curl -X PUT https://restful-api-sca9.onrender.com/order/:_id \
+  -H "Content-Type: application/json" \
+  -d '{"userId": "", "bookIds": ["", ""]}'
+~~~
+#### Delete an order by ID
+~~~
+  curl -X DELETE https://restful-api-sca9.onrender.com/order/:_id
+~~~
+
+
 
 
 ## Licens

@@ -4,10 +4,12 @@ import BookStoreBooksRouter from './routes/bookRoutes';
 import BookStoreOrderRouter from './routes/orderRoutes';
 import BookStoreReviewRouter from './routes/reviewRoutes';
 import { connectToDatabase } from '../src/utils/db';
+import cors from 'cors';
 
 const app = express();
 // Place the connection here
 app.use(express.json());
+app.use(cors());
 
 app.use("/user", BookStoreUserRouter);
 app.use("/book", BookStoreBooksRouter);
