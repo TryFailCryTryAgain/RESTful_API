@@ -19,6 +19,22 @@ const getBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ message: "Error fetching books ", error: err });
     }
 });
+const getBookId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { _id } = req.params;
+        if (!_id) {
+            res.status(400).json({ _id: "_id params is required" });
+        }
+        const user = yield bookModel_1.Book.findOne({ _id });
+        if (!user) {
+            res.status(404).json({ message: "No book found with that ID" });
+        }
+        res.json(user);
+    }
+    catch (err) {
+        res.status(500).json({ message: "Error fetching book by ID ", error: err });
+    }
+});
 const getBookByTitle = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { title } = req.params;
@@ -106,6 +122,7 @@ const deleteBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.default = {
     getBook,
+    getBookId,
     getBookByTitle,
     createBook,
     updateBook,

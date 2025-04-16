@@ -18,7 +18,7 @@ const getBookId = async (req: Request, res: Response): Promise<void> => {
         }
         const user = await Book.findOne({ _id });
         if (!user) {
-            res.status(404).json({ message: "No user found with that ID" });
+            res.status(404).json({ message: "No book found with that ID" });
         }
         res.json(user);
     } catch (err) {
