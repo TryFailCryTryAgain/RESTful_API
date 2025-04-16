@@ -108,8 +108,9 @@ usermockdata.json
 
 - GET /book/ - fetches all books
 - GET /book/:title - Fetches a book by title.
+- GET /book/:_id - Fetches a book by ID.
 - POST /book/ - Creates a new book.
-- PUT /book/:_id - Updates a bbok by ID.
+- PUT /book/:_id - Updates a book by ID.
 - DELETE /book/:_id - Deletes a book by ID.
 
 ### Review Routes
@@ -176,6 +177,10 @@ curl http://localhost:3000/book/
 #### Fetch a book by title
 ~~~
   curl http://localhost:3000/book/:title
+~~~
+#### Fetch a book by ID
+~~~
+  curl http://localhost:3000/book/:_id
 ~~~
 #### Create a new book
 ~~~
@@ -288,6 +293,10 @@ curl https://restful-api-sca9.onrender.com/book/
 #### Fetch a book by title
 ~~~
   curl https://restful-api-sca9.onrender.com/book/:title
+~~~
+#### Fetch a book by ID
+~~~
+  curl https://restful-api-sca9.onrender.com/book/:_id
 ~~~
 #### Create a new book
 ~~~
