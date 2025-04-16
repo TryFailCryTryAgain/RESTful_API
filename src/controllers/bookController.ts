@@ -10,6 +10,23 @@ const getBook = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
+const getBookId = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { _id } = req.params;
+        if (!_id) {
+            res.status(400).json({ _id: "_id params is required" });
+        }
+        const user = await Book.findOne({ _id });
+        if (!user) {
+            res.status(404).json({ message: "No user found with that ID" });
+        }
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ message: "Error fetching book by ID ", error: err })
+    }
+
+}
+
 const getBookByTitle = async (req: Request, res: Response): Promise<void> => {
     try {
         const { title } = req.params;
@@ -103,6 +120,7 @@ const deleteBook = async (req: Request, res: Response): Promise<void> => {
 
 export default {
     getBook,
+    getBookId,
     getBookByTitle,
     createBook,
     updateBook,
