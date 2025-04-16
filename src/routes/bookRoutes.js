@@ -10,7 +10,7 @@ const BookStoreBooksRouter = express_1.default.Router();
 // Define routes
 BookStoreBooksRouter.get("/", getBook);
 BookStoreBooksRouter.get("/:title", getBookByTitle);
-BookStoreBooksRouter.get("/:_id", getBookId);
+BookStoreBooksRouter.get("/id/:_id", getBookId);
 BookStoreBooksRouter.post("/", createBook); // Doesnt work yet, missing code MIA same as the routes below
 BookStoreBooksRouter.put("/:_id", updateBook);
 BookStoreBooksRouter.delete("/:_id", deleteBook);
