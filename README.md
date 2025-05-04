@@ -296,7 +296,7 @@ curl https://restful-api-sca9.onrender.com/book/
 ~~~
 #### Fetch a book by ID
 ~~~
-  curl https://restful-api-sca9.onrender.com/book/:_id
+  curl https://restful-api-sca9.onrender.com/book/id/:_id
 ~~~
 #### Create a new book
 ~~~
@@ -312,7 +312,7 @@ curl https://restful-api-sca9.onrender.com/book/
 ~~~
 #### Delete a book by ID
 ~~~
-  curl -X DELETE https://restful-api-sca9.onrender.com/book/:_id
+  curl -X DELETE https://restful-api-sca9.onrender.com/book/id/:_id
 ~~~
 #### Fetch all reviews
 ~~~

@@ -35,6 +35,25 @@ const getBookId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ message: "Error fetching book by ID ", error: err });
     }
 });
+const getBookByGenre = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { genre } = req.params;
+        if (!genre) {
+            res.status(400).json({ genre: "genre params is required" });
+            return;
+        }
+        const decodedGenre = decodeURIComponent(genre);
+        const books = yield bookModel_1.Book.find({ genre: decodedGenre });
+        if (!books || books.length === 0) {
+            res.status(404).json({ message: "No books found with that genre" });
+            return;
+        }
+        res.json(books);
+    }
+    catch (err) {
+        res.status(500).json({ message: "Error fetch books by genre", error: err });
+    }
+});
 const getBookByTitle = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { title } = req.params;
@@ -126,5 +145,6 @@ exports.default = {
     getBookByTitle,
     createBook,
     updateBook,
-    deleteBook
+    deleteBook,
+    getBookByGenre
 };

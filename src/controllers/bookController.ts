@@ -27,6 +27,26 @@ const getBookId = async (req: Request, res: Response): Promise<void> => {
 
 }
 
+const getBookByGenre = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const {genre} = req.params;
+        if (!genre) {
+            res.status(400).json({genre: "genre params is required"});
+            return;
+        }
+        const decodedGenre = decodeURIComponent(genre);
+        const books = await Book.find({ genre: decodedGenre });
+        
+        if (!books || books.length === 0) {
+            res.status(404).json({ message: "No books found with that genre" });
+            return;
+        }
+        res.json(books);
+    } catch (err) {
+        res.status(500).json({ message: "Error fetch books by genre", error: err })
+    }
+}
+
 const getBookByTitle = async (req: Request, res: Response): Promise<void> => {
     try {
         const { title } = req.params;
@@ -124,5 +144,6 @@ export default {
     getBookByTitle,
     createBook,
     updateBook,
-    deleteBook
+    deleteBook,
+    getBookByGenre
 };
